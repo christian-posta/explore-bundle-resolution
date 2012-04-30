@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <artifactId>explore-bundle-resolution</artifactId>
+        <groupId>explore-bundle-resolution</groupId>
+        <version>1.0</version>
+    </parent>
+    <artifactId>hello-world</artifactId>
+    <packaging>bundle</packaging>
+    <name>Hello World Bundle</name>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.felix</groupId>
+                <artifactId>maven-bundle-plugin</artifactId>
+                <!--
+                "extensions" = true
+                These are artifacts injected into a project's build that provide custom implementations of
+                components that help Maven's core manage the runtime representation of projects. They might include
+                Maven Wagon implementations, to provide access to artifacts and metadata over special network
+                transports; or, they might contain custom plugin mappings (also known as lifecycle mappings) and
+                artifact handler components, geared toward special project packaging types.
+                -->
+                <extensions>true</extensions>
+                <configuration>
+                    <instructions>
+                        <Export-Package>org.apache.foo</Export-Package>
+                        <Bundle-Activator>org.apache.foo.HelloWorld</Bundle-Activator>
+                    </instructions>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+    <dependencies>
+        <dependency>
+            <groupId>org.apache.felix</groupId>
+            <artifactId>org.osgi.core</artifactId>
+            <version>1.2.0</version>
+        </dependency>
+    </dependencies>
+
+
+</project>
